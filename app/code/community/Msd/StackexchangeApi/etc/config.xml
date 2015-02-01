@@ -44,14 +44,15 @@
                 <class>Msd_StackexchangeApi_Helper</class>
             </msd_stackexchangeapi>
         </helpers>
-        <!--
+
         <stackexchangeapi>
-            <api_url><![CDATA[https://api.stackexchange.com/]]></api_url>
-            <oauth_url><![CDATA[https://stackexchange.com/oauth]]></oauth_url>
-            <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
-            <scope><![CDATA[no_expiry]]></scope>
+            <settings>
+                <api_url><![CDATA[https://api.stackexchange.com/]]></api_url>
+                <oauth_url><![CDATA[https://stackexchange.com/oauth]]></oauth_url>
+                <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
+                <scope><![CDATA[no_expiry]]></scope>
+            </settings>
         </stackexchangeapi>
-        -->
     </global>
     <frontend>
         <routers>

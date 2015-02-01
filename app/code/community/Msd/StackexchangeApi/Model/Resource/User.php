@@ -9,4 +9,14 @@ class Msd_StackexchangeApi_Model_Resource_User extends Mage_Core_Model_Resource_
     protected function _construct() {
         $this->_init('msd_stackexchangeapi/user', 'id');
     }
+
+    protected function _getLoadSelect($field, $value, $object) {
+        $select = parent::_getLoadSelect($field, $value, $object);
+
+        $select->joinLeft(
+            array('ce' => 'customer_entity'),
+            $this->getMainTable() . '.customer_id = ce.entity_id',
+            array('columnA'));
+        return $select;
+    }
 }

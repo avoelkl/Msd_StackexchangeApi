@@ -12,7 +12,7 @@
             <action method="addLink" translate="label" module="msd_stackexchangeapi">
                 <name>msd_stackexchangeapi</name>
                 <path>stackexchangeapi/user_authenticate</path>
-                <label>Stackexchange Auth</label>
+                <label>Stackexchange Authentication</label>
             </action>
         </reference>
     </customer_account>

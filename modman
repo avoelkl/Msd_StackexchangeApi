@@ -1,4 +1,5 @@
 app/code/community/Msd/StackexchangeApi/                            app/code/community/Msd/StackexchangeApi/
 app/design/frontend/base/default/layout/msd/stackexchangeapi.xml    app/design/frontend/base/default/layout/msd/stackexchangeapi.xml
 app/design/frontend/base/default/template/msd                       app/design/frontend/base/default/template/msd
+lib/Msd/StackexchangeApi                                            lib/Msd/StackexchangeApi
 app/etc/modules/Msd_StackexchangeApi.xml                            app/etc/modules/Msd_StackexchangeApi.xml

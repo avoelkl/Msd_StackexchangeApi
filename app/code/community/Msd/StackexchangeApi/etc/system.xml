@@ -33,6 +33,8 @@
                     <show_in_store>0</show_in_store>
 
                     <fields>
+                        <!-- activation for future use -->
+                        <!--
                         <activation translate="label,comment">
                             <label>Enabled</label>
                             <frontend_type>select</frontend_type>
@@ -42,6 +44,7 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </activation>
+                        -->
                         <client_id translate="label,comment">
                             <label>Client ID</label>
                             <comment><![CDATA[This Id identifies your application to the StackExchange API. Your application client id is not secret, and may be safely embeded in distributed binaries.]]></comment>
