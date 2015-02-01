@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Msd
+ * @package     Msd_StackexchangeApi
+ * @author      Anna Völkl <anna@vape.net>
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <stackexchangeapi module="msd_stackexchangeapi">
+                                        <title>Stack Exchange API</title>
+                                        <sort_order>100</sort_order>
+                                    </stackexchangeapi>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

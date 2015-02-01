@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Msd
+ * @package     Msd_StackexchangeApi
+ * @author      Anna Völkl <anna@vape.net>
+ */
+-->
+<config>
+    <tabs>
+        <magestackday translate="label" module="msd_stackexchangeapi">
+            <label>MageStackDay</label>
+            <sort_order>100</sort_order>
+        </magestackday>
+    </tabs>
+    <sections>
+        <stackexchangeapi translate="label" module="msd_stackexchangeapi">
+            <label>StackExchange API</label>
+            <tab>magestackday</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+
+            <groups>
+                <settings translate="label">
+                    <label>StackExchange API Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+
+                    <fields>
+                        <activation translate="label,comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </activation>
+                        <client_id translate="label,comment">
+                            <label>Client ID</label>
+                            <comment><![CDATA[This Id identifies your application to the StackExchange API. Your application client id is not secret, and may be safely embeded in distributed binaries.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </client_id>
+                        <client_secret translate="label,comment">
+                            <label>Client Secret</label>
+                            <comment><![CDATA[This must be kept secret. Do not embed it in client side code or binaries you intend to distribute.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </client_secret>
+                        <key translate="label,comment">
+                            <label>Key</label>
+                            <comment><![CDATA[Not considered a secret. Receive a higher request quota for the Stack Exchange API]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </key>
+                    </fields>
+                </settings>
+            </groups>
+        </stackexchangeapi>
+    </sections>
+</config>

@@ -14,6 +14,10 @@ Usage
 -----
 Simply install the extension. No configuration required.
 
+### User object
+https://api.stackexchange.com/docs/types/user
+
+
 Compatibility
 -------------
 - Only tested with magento 1.9.1.0

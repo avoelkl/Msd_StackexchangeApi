@@ -1,8 +1,49 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @category    Msd
+ * @package     Msd_StackexchangeApi
+ * @author      Anna Völkl <anna@vape.net>
+ */
+-->
 <config>
     <modules>
         <Msd_StackexchangeApi>
-            <version>0.0.1</version>
+            <version>0.1.0</version>
         </Msd_StackexchangeApi>
     </modules>
+    <global>
+        <models>
+            <msd_stackexchangeapi>
+                <class>Msd_StackexchangeApi_Model</class>
+                <resourceModel>msd_stackexchangeapi_resource</resourceModel>
+            </msd_stackexchangeapi>
+            <msd_stackexchangeapi_resource>
+                <class>Msd_StackexchangeApi_Model_Resource</class>
+                <entities>
+                    <user>
+                        <table>stackexchange_user</table>
+                    </user>
+                </entities>
+            </msd_stackexchangeapi_resource>
+        </models>
+        <resources>
+            <msd_stackexchangeapi_setup>
+                <setup>
+                    <module>Msd_StackexchangeApi</module>
+                </setup>
+            </msd_stackexchangeapi_setup>
+        </resources>
+        <helpers>
+            <msd_stackexchangeapi>
+                <class>Msd_StackexchangeApi_Helper</class>
+            </msd_stackexchangeapi>
+        </helpers>
+        <stackexchangeapi>
+            <api_url><![CDATA[https://api.stackexchange.com/]]></api_url>
+            <oauth_url><![CDATA[https://stackexchange.com/oauth]]></oauth_url>
+            <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
+            <scope><![CDATA[no_expiry]]></scope>
+        </stackexchangeapi>
+    </global>
 </config>
