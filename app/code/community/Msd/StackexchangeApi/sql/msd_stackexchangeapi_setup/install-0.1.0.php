@@ -19,11 +19,18 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'primary'   => true,
     ), 'Id')
+    ->addColumn('customer_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+        'unsigned'  => true,
+        'nullable'  => false,
+        'default'   => '0',
+    ), 'User ID')
     ->addColumn('user_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
         'unsigned'  => true,
         'nullable'  => false,
         'default'   => '0',
     ), 'User ID')
+    ->addColumn('access_token', Varien_Db_Ddl_Table::TYPE_TEXT, 50, array(
+    ), 'Access Token')
     ->addColumn('display_name', Varien_Db_Ddl_Table::TYPE_TEXT, 50, array(
     ), 'Display Name')
     ->addColumn('reputation', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
@@ -31,8 +38,8 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'default'   => '0',
     ), 'Reputation')
-    ->addForeignKey($installer->getFkName('msd_stackexchangeapi/user', 'id', 'customer/entity', 'entity_id'),
-        'id', $installer->getTable('customer/entity'), 'entity_id',
+    ->addForeignKey($installer->getFkName('msd_stackexchangeapi/user', 'customer_id', 'customer/entity', 'entity_id'),
+        'customer_id', $installer->getTable('customer/entity'), 'entity_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
     ->setComment('StackExchange Type user');
 $installer->getConnection()->createTable($table);
