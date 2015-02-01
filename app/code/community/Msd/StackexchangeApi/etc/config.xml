@@ -13,6 +13,11 @@
         </Msd_StackexchangeApi>
     </modules>
     <global>
+        <blocks>
+            <msd_stackexchangeapi>
+                <class>Msd_StackexchangeApi_Block</class>
+            </msd_stackexchangeapi>
+        </blocks>
         <models>
             <msd_stackexchangeapi>
                 <class>Msd_StackexchangeApi_Model</class>
@@ -39,11 +44,31 @@
                 <class>Msd_StackexchangeApi_Helper</class>
             </msd_stackexchangeapi>
         </helpers>
+        <!--
         <stackexchangeapi>
             <api_url><![CDATA[https://api.stackexchange.com/]]></api_url>
             <oauth_url><![CDATA[https://stackexchange.com/oauth]]></oauth_url>
             <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
             <scope><![CDATA[no_expiry]]></scope>
         </stackexchangeapi>
+        -->
     </global>
+    <frontend>
+        <routers>
+            <msd_stackexchangeapi>
+                <use>standard</use>
+                <args>
+                    <module>Msd_StackexchangeApi</module>
+                    <frontName>stackexchangeapi</frontName>
+                </args>
+            </msd_stackexchangeapi>
+        </routers>
+        <layout>
+            <updates>
+                <msd_stackexchangeapi>
+                    <file>msd/stackexchangeapi.xml</file>
+                </msd_stackexchangeapi>
+            </updates>
+        </layout>
+    </frontend>
 </config>

@@ -36,5 +36,4 @@ $table = $installer->getConnection()
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
     ->setComment('StackExchange Type user');
 $installer->getConnection()->createTable($table);
-Mage::log("install_end");
 $installer->endSetup();

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Msd
+ * @package     Msd_StackexchangeApi
+ * @author      Anna Völkl <anna@vape.net>
+ */
+-->
+<config>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="msd_stackexchangeapi">
+                <name>msd_stackexchangeapi</name>
+                <path>stackexchangeapi/user_authenticate</path>
+                <label>Stackexchange Auth</label>
+            </action>
+        </reference>
+    </customer_account>
+
+    <msd_stackexchangeapi_user_authenticate_index>
+        <reference name="content">
+            <block type="core/template" name="msd_stackexchangeapi_user_auth" template="msd/authenticate.phtml"/>
+        </reference>
+    </msd_stackexchangeapi_user_authenticate_index>
+</config>
