@@ -21,6 +21,19 @@ class Msd_StackexchangeApi_Client {
         $this->accesstoken_url  = $accesstoken_url;
     }
 
+    /*
+     *
+     * StackExchange Authentication:
+     * 1. Send a user to https://stackexchange.com/oauth, with these query string parameters
+     * client_id
+     * scope (details)
+     * redirect_uri - must be under an apps registered domain
+     * state - optional
+     *
+     * 2. The user approves your app
+     *
+     * For StackExchange Authentication, see https://api.stackexchange.com/docs/authentication
+     */
     public function getOauthUrl() {
         $query = array('client_id'      => $this->client_id,
                         'scope'         => $this->scope,
@@ -32,6 +45,20 @@ class Msd_StackexchangeApi_Client {
         return $this->oauth_url . "?" . $querystring;
     }
 
+    /*
+     *
+     * StackExchange Authentication:
+     * 4. POST (application/x-www-form-urlencoded) the following parameters to https://stackexchange.com/oauth/access_token
+     *
+     * client_id
+     * client_secret
+     * code - from the previous step
+     * redirect_uri - must be the same as the provided in the first step
+     *
+     * This request is responded to with either an error (HTTP status code 400) or an access token of the form
+     * access_token=...&expires=1234. expires will only be set if scope does not include no_expiry, the use of
+     * which is strongly advised against unless your app truly needs perpetual access.
+     */
     public function getAccessToken($code) {
         $ch = curl_init($this->accesstoken_url);
 

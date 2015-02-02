@@ -19,7 +19,13 @@
 
     <msd_stackexchangeapi_user_authenticate_index>
         <reference name="content">
-            <block type="core/template" name="msd_stackexchangeapi_user_auth" template="msd/authenticate.phtml"/>
+            <block type="msd_stackexchangeapi/authentication" name="msd_stackexchangeapi_user_auth" template="msd/authenticate.phtml"/>
         </reference>
     </msd_stackexchangeapi_user_authenticate_index>
+
+    <msd_stackexchangeapi_user_authenticate_accesstoken>
+        <reference name="content">
+            <block type="msd_stackexchangeapi/authentication" name="msd_stackexchangeapi_user_auth_accesstoken" template="msd/authenticate.phtml"/>
+        </reference>
+    </msd_stackexchangeapi_user_authenticate_accesstoken>
 </config>

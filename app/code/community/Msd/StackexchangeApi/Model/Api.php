@@ -17,6 +17,7 @@ class Msd_StackexchangeApi_Model_Api {
 
     private $seClient;
 
+    //@TODO: refactor
     function __construct() {
         $helper = Mage::helper('msd_stackexchangeapi');
 
@@ -39,6 +40,20 @@ class Msd_StackexchangeApi_Model_Api {
             $this->accesstoken_url);
     }
 
+
+    /*
+     *
+     * StackExchange Authentication:
+     * 1. Send a user to https://stackexchange.com/oauth, with these query string parameters
+     * client_id
+     * scope (details)
+     * redirect_uri - must be under an apps registered domain
+     * state - optional
+     *
+     * 2. The user approves your app
+     *
+     * For StackExchange Authentication, see https://api.stackexchange.com/docs/authentication
+     */
     public function getOauthUrl() {
         return $this->seClient->getOauthUrl();
     }
