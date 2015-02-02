@@ -16,7 +16,7 @@ class Msd_StackexchangeApi_Model_Resource_User extends Mage_Core_Model_Resource_
         $select->joinLeft(
             array('ce' => 'customer_entity'),
             $this->getMainTable() . '.customer_id = ce.entity_id',
-            array('columnA'));
+            array('entity_id'));
         return $select;
     }
 }
