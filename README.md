@@ -6,6 +6,11 @@ Facts
 -----
 - works with Stack Exchange API V2.2
 
+ToDo's
+-----------
+* Integrate authentication process to customer sign-up
+* 
+
 Description
 -----------
 tbd
@@ -20,7 +25,7 @@ https://api.stackexchange.com/docs/types/user
 
 Compatibility
 -------------
-- Only tested with magento 1.9.1.0
+- Tested with magento 1.9.1.0
 
 Support
 -------
@@ -35,7 +40,7 @@ Developer
 ---------
 Anna Völkl  
 [http://anna.vape.net](http://anna.vape.net)  
-[@VrescueAnn](https://twitter.com/rescueAnn)
+[@rescueAnn](https://twitter.com/rescueAnn)
 
 Licence
 -------

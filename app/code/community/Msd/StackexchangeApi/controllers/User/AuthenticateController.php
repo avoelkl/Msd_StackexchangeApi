@@ -46,11 +46,6 @@ class Msd_StackexchangeApi_User_AuthenticateController extends Mage_Core_Control
         //no data present => not authenticated before
         if(!$seUser->hasData() || !$seUser->hasData('access_token')) {
             $this->_redirectUrl($stackClient->getOauthUrl());
-
-            //works so far, but ends with error:
-            // An error occurred while login into an application.
-            // Cannot return to provided redirect_uri
-            //might be due to local dev-domain...
         }
 
         $this->loadLayout();
@@ -72,25 +67,19 @@ class Msd_StackexchangeApi_User_AuthenticateController extends Mage_Core_Control
      * which is strongly advised against unless your app truly needs perpetual access.
      */
     public function accesstokenAction() {
-        var_dump($this->getRequest());
-        //$code = $this->getRequest()->getParam('code');
-
-        //@TODO: do POST request
+        $request_uri = $this->getRequest()->getRequestUri();
+        $query = parse_url($request_uri, PHP_URL_QUERY);
+        parse_str($query, $output);
+        $code = $output['code'];
 
         $stackClient = Mage::getModel('msd_stackexchangeapi/api');
-        $stackClient->getAccessToken();
+        $access_token = $stackClient->getAccessToken($code);
 
-        //@TODO: save data to stackexchange_user, not tested
-
-        //$seUser = Mage::getModel('msd_stackexchangeapi/user');
-        //$session = Mage::getSingleton('customer/session');
-        //$seUser->setCustomerId($session->getCustomerId());
-        //$seUser->setAccessToken($this->getRequest()->getParam('access_token'));
-        //
-        // get username, reputation
-        //
-        //$seUser->save();
-
+        $seUser = Mage::getModel('msd_stackexchangeapi/user');
+        $session = Mage::getSingleton('customer/session');
+        $seUser->setCustomerId($session->getCustomerId());
+        $seUser->setAccessToken($access_token);
+        $seUser->save();
 
         $this->loadLayout();
         $this->renderLayout();

@@ -43,8 +43,8 @@ class Msd_StackexchangeApi_Model_Api {
         return $this->seClient->getOauthUrl();
     }
 
-    public function getAccessToken() {
-        $this->seClient->getAccessToken();
+    public function getAccessToken($code) {
+        return $this->seClient->getAccessToken($code);
     }
 /*
     public function getAccessTokenUrl() {

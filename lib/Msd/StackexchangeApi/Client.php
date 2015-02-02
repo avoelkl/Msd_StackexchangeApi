@@ -32,12 +32,12 @@ class Msd_StackexchangeApi_Client {
         return $this->oauth_url . "?" . $querystring;
     }
 
-    public function getAccessToken() {
+    public function getAccessToken($code) {
         $ch = curl_init($this->accesstoken_url);
 
         $query = array('client_id'      => $this->client_id,
                         'client_secret' => $this->client_secret,
-                        'code'          => $this->user_code,
+                        'code'          => $code,
                         'redirect_uri'  => $this->redirect_uri,
         );
         $querystring = http_build_query($query);
@@ -49,7 +49,7 @@ class Msd_StackexchangeApi_Client {
 
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         switch($httpcode) {
-            case 200: $data = parse_str($response);
+            case 200: parse_str($response, $data);
                 return $data['access_token'];
                 break;
             case 400: throw new Exception("Error during authorization");
