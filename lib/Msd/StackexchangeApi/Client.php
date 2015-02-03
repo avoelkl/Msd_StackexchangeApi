@@ -10,6 +10,7 @@ class Msd_StackexchangeApi_Client {
     private $redirect_uri;
     private $userMeUrl;
     private $state;
+    private $key;
 
     public function __construct(Msd_StackexchangeApi_Model_Config $config) {
         $this->client_id        = $config->getClientId();
@@ -20,6 +21,7 @@ class Msd_StackexchangeApi_Client {
         $this->state            = $config->getState();
         $this->oauth_url        = $config->getOauthUrl();
         $this->accesstoken_url  = $config->getAccesstokenUrl();
+        $this->key              = $config->getKey();
     }
 
     /*
@@ -88,24 +90,26 @@ class Msd_StackexchangeApi_Client {
     }
 
     public function getUserInfo($access_token) {
-        $ch = curl_init($this->userMeUrl);
+
 
         $query = array(
             'access_token'  => $access_token,
+            'key'           => $this->key,
+            'site'          => 'magento'        //hardcoded, needs to be editable via config
         );
         $querystring = http_build_query($query);
-        //curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-type: application/x-www-form-urlencoded'));
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $querystring);
+
+        $ch = curl_init($this->userMeUrl."?".$querystring);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-type: application/json, Accept: application/json'));
+        curl_setopt($ch,CURLOPT_ENCODING , "gzip");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);  // RETURN THE CONTENTS OF THE CALL
         $response = curl_exec($ch);
 
         $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         switch($httpcode) {
-            case 200: parse_str($response, $data);
-                return $data['access_token'];
+            case 200: return $response;
                 break;
-            case 400: throw new Exception("Error during authorization");
+            case 400: throw new Exception("Error during user info");
                 break;
             default: throw new Exception("An error occured.");
                 break;

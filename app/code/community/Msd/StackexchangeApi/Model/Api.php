@@ -36,12 +36,26 @@ class Msd_StackexchangeApi_Model_Api {
     public function getAccessToken($code) {
         return $this->_seClient->getAccessToken($code);
     }
-/*
-    public function getAccessTokenUrl() {
-        return $$this->seClient->getAccessTokenUrl();
-    }
-*/
-    public function getUserInfo($access_token) {
-        return $this->_seClient->getUserInfo($access_token);
+
+    public function setUserInfo($access_token) {
+        $userInfo = $this->_seClient->getUserInfo($access_token);
+        $info = json_decode($userInfo,true);
+        $data = $info["items"]["0"];
+
+        $seUser = Mage::getModel('msd_stackexchangeapi/user');
+        $session = Mage::getSingleton('customer/session');
+        $seUser->setCustomerId($session->getCustomerId());
+        $seUser->setAccessToken($access_token);
+        $seUser->setUserId($data["user_id"]);
+        $seUser->setAccountId($data["account_id"]);
+        $seUser->setDisplayName($data["display_name"]);
+        $seUser->setLocation($data["location"]);
+        $seUser->setWebsiteUrl($data["website_url"]);
+        $seUser->setProfileImage($data["profile_image"]);
+        $seUser->setLink($data["link"]);
+        $seUser->setUserId($info);
+        $seUser->save();
+
+        return;
     }
 }
