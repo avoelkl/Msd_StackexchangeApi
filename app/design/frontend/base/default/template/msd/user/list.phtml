@@ -5,7 +5,8 @@ $collection = $this->getAuthenticatedUserList();
 <ul>
 <?php foreach($collection as $user): ?>
 <li>
-    <?php echo $user->getUsername(); ?>
+    <img src="<?php echo $user->getProfileImage(); ?>" height="40" style="display: inline; vertical-align: middle;"/>
+    <a href="<?php $user->getLink(); ?>"><?php echo $user->getDisplayName(); ?></a>
 </li>
 <?php endforeach; ?>
 </ul>
