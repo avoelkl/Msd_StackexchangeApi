@@ -11,6 +11,7 @@ class Msd_StackexchangeApi_Helper_Data extends Mage_Core_Helper_Abstract {
     const XML_PATH_KEY              = 'stackexchangeapi/settings/key';
     const XML_PATH_OAUTH_URL        = 'global/stackexchangeapi/settings/oauth_url';
     const XML_PATH_ACCESSTOKEN_URL  = 'global/stackexchangeapi/settings/accesstoken_url';
+    const XML_PATH_USER_ME_URL      = 'global/stackexchangeapi/settings/user_me_url';
     const XML_PATH_SCOPE            = 'global/stackexchangeapi/settings/scope';
 
 
@@ -47,5 +48,8 @@ class Msd_StackexchangeApi_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getUrl('stackexchangeapi/user_authenticate/accesstoken');
     }
 
+    public function getAppDataUserMeUrl() {
+        return (string)Mage::getConfig()->getNode(self::XML_PATH_USER_ME_URL);
+    }
 
 }

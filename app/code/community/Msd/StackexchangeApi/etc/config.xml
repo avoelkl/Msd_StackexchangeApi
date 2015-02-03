@@ -50,6 +50,7 @@
                 <api_url><![CDATA[https://api.stackexchange.com/]]></api_url>
                 <oauth_url><![CDATA[https://stackexchange.com/oauth]]></oauth_url>
                 <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
+                <user_me_url><![CDATA[https://api.stackexchange.com/2.2/me]]></user_me_url>
                 <scope><![CDATA[no_expiry]]></scope>
             </settings>
         </stackexchangeapi>

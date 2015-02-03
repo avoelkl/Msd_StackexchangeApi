@@ -1,0 +1,11 @@
+<h1>Registered Users</h1>
+<?php
+$collection = $this->getAuthenticatedUserList();
+?>
+<ul>
+<?php foreach($collection as $user): ?>
+<li>
+    <?php echo $user->getUsername(); ?>
+</li>
+<?php endforeach; ?>
+</ul>

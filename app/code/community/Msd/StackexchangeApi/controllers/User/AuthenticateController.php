@@ -49,6 +49,7 @@ class Msd_StackexchangeApi_User_AuthenticateController extends Mage_Core_Control
 
         $seUser = Mage::getModel('msd_stackexchangeapi/user');
         $session = Mage::getSingleton('customer/session');
+
         $seUser->setCustomerId($session->getCustomerId());
         $seUser->setAccessToken($access_token);
         $seUser->save();

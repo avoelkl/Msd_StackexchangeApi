@@ -28,4 +28,10 @@
             <block type="msd_stackexchangeapi/authentication" name="msd_stackexchangeapi_user_auth_accesstoken" template="msd/authenticate.phtml"/>
         </reference>
     </msd_stackexchangeapi_user_authenticate_accesstoken>
+
+    <msd_stackexchangeapi_user_list>
+        <reference name="content">
+            <block type="msd_stackexchangeapi/user_list" name="msd_stackexchangeapi_user_list" template="msd/user/list.phtml"/>
+        </reference>
+    </msd_stackexchangeapi_user_list>
 </config>
