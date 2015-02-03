@@ -6,10 +6,16 @@ Facts
 -----
 - works with Stack Exchange API V2.2
 
-ToDo's
+To Do's
+-----
+* Implement user log table and cronjob to track StackExchange activity
+* Integrate StackExchange statistics
+* Configure site to track (currently 'magento' hardcoded)
+
+Features
 -----------
-* Integrate authentication process to customer sign-up
-* 
+* Authentication via customer account
+* View registered user list via http://yourdomain.com/stackexchangeapi/user/list
 
 Description
 -----------
@@ -17,15 +23,13 @@ tbd
 
 Usage
 -----
-Simply install the extension. No configuration required.
-
-### User object
-https://api.stackexchange.com/docs/types/user
-
+1. Register your StackApps application at http://stackapps.com/apps/oauth/register
+2. Install extension.
+3. Configue Stack App-Data via System > Configuration > Magestackday > StackExchange API
 
 Compatibility
 -------------
-- Tested with magento 1.9.1.0
+- Tested with Magento 1.9.1.0
 
 Support
 -------
