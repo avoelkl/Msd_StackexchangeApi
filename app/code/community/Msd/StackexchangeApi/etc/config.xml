@@ -79,4 +79,16 @@
             </updates>
         </layout>
     </frontend>
+    <crontab>
+        <jobs>
+            <msd_stackexchangeapi_update_stats>
+                <schedule>
+                    <cron_expr>30 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>msd_stackexchangeapi/observer::updateStats</model>
+                </run>
+            </msd_stackexchangeapi_update_stats>
+        </jobs>
+    </crontab>
 </config>

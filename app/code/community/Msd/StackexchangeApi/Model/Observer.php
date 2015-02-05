@@ -6,4 +6,10 @@
  */
 class Msd_StackexchangeApi_Model_Observer {
 
+    /*
+     * cronjob action
+     */
+    public function updateStats() {
+        return;
+    }
 }
