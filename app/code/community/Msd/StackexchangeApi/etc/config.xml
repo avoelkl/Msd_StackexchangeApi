@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Msd_StackexchangeApi>
-            <version>0.2.0</version>
+            <version>0.3.0</version>
         </Msd_StackexchangeApi>
     </modules>
     <global>
@@ -29,6 +29,12 @@
                     <user>
                         <table>stackexchange_user</table>
                     </user>
+                    <user_history>
+                        <table>stackexchange_user_history</table>
+                    </user_history>
+                    <statistics>
+                        <table>stackexchange_statistics</table>
+                    </statistics>
                 </entities>
             </msd_stackexchangeapi_resource>
         </models>
