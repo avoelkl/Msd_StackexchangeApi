@@ -45,7 +45,7 @@ class Msd_StackexchangeApi_Helper_Data extends Mage_Core_Helper_Abstract {
     }
 
     public function getAppDataRedirectUri() {
-        return Mage::getUrl('stackexchangeapi/user_authenticate/accesstoken');
+        return Mage::getUrl('*/user_authenticate/accesstoken');
     }
 
     public function getAppDataUserMeUrl() {
