@@ -8,14 +8,17 @@ Facts
 
 To Do's
 -----
-* Implement user log table and cronjob to track StackExchange activity
-* Integrate StackExchange statistics
+* Integrate StackExchange global statistics
 * Configure site to track (currently 'magento' hardcoded)
+* Improve error handling
+* refactor Msd_StackexchangeApi_Client
+
 
 Features
 -----------
 * Authentication via customer account
-* View registered user list via http://yourdomain.com/stackexchangeapi/user/list
+* View registered user list via http://yourdomain.com/stackexchange/user/list
+* Cronjob to update statistics data of authenticated users every 30 min
 
 Description
 -----------

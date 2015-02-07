@@ -91,23 +91,30 @@ class Msd_StackexchangeApi_Client {
 
     public function getUserInfo($access_token) {
 
-
         $query = array(
             'access_token'  => $access_token,
             'key'           => $this->key,
+            'filter'        => '!9YdnSBV__',       //according to stackexchange-api site, including *_count fields
             'site'          => 'magento'        //hardcoded, needs to be editable via config
         );
         $querystring = http_build_query($query);
+        $url = $this->userMeUrl."?".$querystring;
 
-        $ch = curl_init($this->userMeUrl."?".$querystring);
-        curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-type: application/json, Accept: application/json'));
-        curl_setopt($ch,CURLOPT_ENCODING , "gzip");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);  // RETURN THE CONTENTS OF THE CALL
-        $response = curl_exec($ch);
+        $adapter = new Zend_Http_Client_Adapter_Curl();
+        $client = new Zend_Http_Client($url);
+        $client->setAdapter($adapter);
+        $adapter->setConfig(array(
+            'curloptions' => array(
+                CURLOPT_HTTPHEADER => array('Content-type: application/json, Accept: application/json'),
+                CURLOPT_RETURNTRANSFER => 1
+            )
+        ));
+        $client->request("GET");
+        $response = $client->getLastResponse();
 
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $httpcode = $response->getStatus();
         switch($httpcode) {
-            case 200: return $response;
+            case 200: return $response->getBody();
                 break;
             case 400: throw new Exception("Error during user info");
                 break;
@@ -115,5 +122,10 @@ class Msd_StackexchangeApi_Client {
                 break;
         }
     }
+
+    /*
+     * to implement
+     * https://api.stackexchange.com/docs/reputation-on-users
+     */
 
 }

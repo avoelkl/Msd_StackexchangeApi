@@ -67,7 +67,7 @@
                 <use>standard</use>
                 <args>
                     <module>Msd_StackexchangeApi</module>
-                    <frontName>stackexchangeapi</frontName>
+                    <frontName>stackexchange</frontName>
                 </args>
             </msd_stackexchangeapi>
         </routers>

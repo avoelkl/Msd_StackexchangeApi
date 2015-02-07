@@ -25,6 +25,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'default'   => '0',
     ), 'Stackexchange ID from stackexchange_user table')
+    ->addColumn('insert_date', Varien_Db_Ddl_Table::TYPE_DATETIME, null, array(), 'insert date')
     ->addColumn('user_id', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
         'unsigned'  => true,
         'nullable'  => false,

@@ -58,4 +58,16 @@ class Msd_StackexchangeApi_Model_Api {
 
         return;
     }
+
+    /*
+     * Get user info via access token
+     */
+    public function getUserInfo($access_token) {
+        $userInfo = $this->_seClient->getUserInfo($access_token);
+
+        $seInfo = Zend_Json::decode($userInfo);
+        $data = $seInfo["items"][0];
+
+        return $data;
+    }
 }
