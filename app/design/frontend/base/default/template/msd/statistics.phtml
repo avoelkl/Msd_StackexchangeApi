@@ -1,0 +1,127 @@
+<?php
+$collection = $this->getStatistics();
+?>
+
+<h1>magento.stackexchange.com Statistics</h1>
+<p>Updated every 30 min. Time in CEST (UTC+2).</p>
+
+<style type="text/css">
+    #chartdiv {
+        width		: 90%;
+        height		: 400px;
+        font-size	: 11px;
+    }
+</style>
+
+<script type="text/javascript">
+    var chartData = generatechartData();
+
+    function generatechartData() {
+        var chartData = [];
+
+        <?php foreach($collection as $row): ?>
+        date = new Date(<?php echo strtotime($row->getDate())*1000; ?>);
+        chartData.push({ date: date, total_questions: <?php echo $row->getTotalQuestions(); ?>, total_answers: <?php echo $row->getTotalAnswers(); ?>, total_unanswered: <?php echo $row->getTotalUnanswered(); ?>, total_accepted: <?php echo $row->getTotalAccepted(); ?>, total_votes: <?php echo $row->getTotalUsers(); ?>, total_comments: <?php echo $row->getTotalComments(); ?>, total_users: <?php echo $row->getUsers(); ?>, answers_per_minute: <?php echo $row->getAnsweresPerMinute(); ?>, questions_per_minute: <?php echo $row->getQuestionsPerMinute(); ?>, });
+        <?php endforeach; ?>
+
+        return chartData;
+    }
+
+
+    var chart = AmCharts.makeChart("chartdiv", {
+        "theme": "none",
+        "type": "serial",
+        "pathToImages": "http://www.amcharts.com/lib/3/images/",
+        "legend": {
+            "useGraphSettings": true
+        },
+        "dataProvider": chartData,
+        "valueAxes": [{
+            "id":"v1",
+            "axisColor": "#FF6600",
+            "axisThickness": 2,
+            "gridAlpha": 0,
+            "axisAlpha": 1,
+            "position": "left"
+        }, {
+            "id":"v2",
+            "axisColor": "#FCD202",
+            "axisThickness": 2,
+            "gridAlpha": 0,
+            "axisAlpha": 1,
+            "position": "right"
+        }, {
+            "id":"v3",
+            "axisColor": "#B0DE09",
+            "axisThickness": 2,
+            "gridAlpha": 0,
+            "offset": 50,
+            "axisAlpha": 1,
+            "position": "left"
+        }],
+        "graphs": [
+            {
+                "valueAxis": "v1",
+                "lineColor": "#FF6600",
+                "bullet": "round",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "total questions",
+                "valueField": "total_questions",
+                "fillAlphas": 0
+            }, {
+                "valueAxis": "v2",
+                "lineColor": "#FCD202",
+                "bullet": "square",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "total answers",
+                "valueField": "total_answers",
+                "fillAlphas": 0
+            }, {
+                "valueAxis": "v3",
+                "lineColor": "#B0DE09",
+                "bullet": "triangleUp",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "total accepted",
+                "valueField": "total_accepted",
+                "fillAlphas": 0
+            }, {
+                "valueAxis": "v4",
+                "lineColor": "#428bca",
+                "bullet": "triangleUp",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "total unanswered",
+                "valueField": "total_unanswered",
+                "fillAlphas": 0
+            }
+        ],
+        "chartScrollbar": {
+        },
+        "chartCursor": {
+            "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
+            "valueLineEnabled":true,
+            "valueLineBalloonEnabled":true
+        },
+        "categoryField": "date",
+        "categoryAxis": {
+            "parseDates": true,
+            "minPeriod": "mm",
+            "axisAlpha": 0,
+            "minHorizontalGap":60
+        }
+    });
+
+    //chart.addListener("dataUpdated", zoomChart);
+    //zoomChart();
+
+    function zoomChart(){
+        if(chart.zoomToIndexes){
+            chart.zoomToIndexes(130, chartData.length - 1);
+        }
+    }
+
+</script>
+<div id="chartdiv"></div>

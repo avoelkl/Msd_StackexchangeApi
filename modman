@@ -3,3 +3,4 @@ app/design/frontend/base/default/layout/msd/stackexchangeapi.xml    app/design/f
 app/design/frontend/base/default/template/msd                       app/design/frontend/base/default/template/msd
 lib/Msd/StackexchangeApi                                            lib/Msd/StackexchangeApi
 app/etc/modules/Msd_StackexchangeApi.xml                            app/etc/modules/Msd_StackexchangeApi.xml
+js/msd/stackexchangeapi/                                            js/msd/stackexchangeapi/
