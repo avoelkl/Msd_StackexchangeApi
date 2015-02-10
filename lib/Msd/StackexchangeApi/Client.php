@@ -123,6 +123,17 @@ class Msd_StackexchangeApi_Client {
         }
     }
 
+    public function getDataFromUrl($url) {
+        try {
+            $httpClient = new Zend_Http_Client($url);
+            $httpResponse = $httpClient->request();
+            return $httpResponse->getBody();
+        }
+        catch(exception $e) {
+            die($e);
+        }
+    }
+
     /*
      * to implement
      * https://api.stackexchange.com/docs/reputation-on-users

@@ -58,6 +58,7 @@
                 <accesstoken_url><![CDATA[https://stackexchange.com/oauth/access_token]]></accesstoken_url>
                 <user_me_url><![CDATA[https://api.stackexchange.com/2.2/me]]></user_me_url>
                 <scope><![CDATA[no_expiry]]></scope>
+                <area_url>http://api.stackexchange.com/2.2/info?site=magento</area_url>
             </settings>
         </stackexchangeapi>
     </global>
@@ -81,14 +82,22 @@
     </frontend>
     <crontab>
         <jobs>
-            <msd_stackexchangeapi_update_stats>
+            <msd_stackexchangeapi_update_user_stats>
                 <schedule>
                     <cron_expr>30 * * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>msd_stackexchangeapi/observer::updateStats</model>
                 </run>
-            </msd_stackexchangeapi_update_stats>
+            </msd_stackexchangeapi_update_user_stats>
+            <msd_stackexchangeapi_update_site_stats>
+                <schedule>
+                    <cron_expr>30 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>msd_stackexchangeapi/observer::updateSiteStats</model>
+                </run>
+            </msd_stackexchangeapi_update_site_stats>
         </jobs>
     </crontab>
 </config>

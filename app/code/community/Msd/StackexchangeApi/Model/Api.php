@@ -70,4 +70,11 @@ class Msd_StackexchangeApi_Model_Api {
 
         return $data;
     }
+
+    /*
+     * Retrieve data from URL
+     */
+    public function getDataFromUrl($url) {
+        return $this->_seClient->getUserInfo($url);
+    }
 }
