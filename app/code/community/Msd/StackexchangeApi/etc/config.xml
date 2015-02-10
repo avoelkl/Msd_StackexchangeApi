@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Msd_StackexchangeApi>
-            <version>0.3.0</version>
+            <version>0.4.0</version>
         </Msd_StackexchangeApi>
     </modules>
     <global>
