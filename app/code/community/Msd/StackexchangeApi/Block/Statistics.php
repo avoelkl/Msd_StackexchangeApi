@@ -7,7 +7,9 @@
 class Msd_StackexchangeApi_Block_Statistics extends Mage_Core_Block_Template {
 
     public function getStatistics() {
-        $collection = Mage::getModel('msd_stackexchangeapi/statistics')->getCollection();
+        $collection = Mage::getModel('msd_stackexchangeapi/statistics')
+                        ->getCollection()
+                        ->addFieldToFilter('active',1);
 
         return $collection;
     }

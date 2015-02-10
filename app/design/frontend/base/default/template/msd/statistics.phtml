@@ -2,7 +2,8 @@
 $collection = $this->getStatistics();
 ?>
 
-<h1>magento.stackexchange.com Statistics</h1>
+<h1>Statistics</h1>
+<p>Statistics for <a href="http://magento.stackexchange.com">magento.stackexchange.com</a></p>
 <p>Updated every 30 min. Time in CEST (UTC+2).</p>
 
 <style type="text/css">
@@ -20,8 +21,9 @@ $collection = $this->getStatistics();
         var chartData = [];
 
         <?php foreach($collection as $row): ?>
+        <?php $acceptance_rate = $row->getTotalQuestions() > 0 ? round((($row->getTotalQuestions() - $row->getTotalUnanswered()) / $row->getTotalQuestions())*100,2) : 0; ?>
         date = new Date(<?php echo strtotime($row->getDate())*1000; ?>);
-        chartData.push({ date: date, total_questions: <?php echo $row->getTotalQuestions(); ?>, total_answers: <?php echo $row->getTotalAnswers(); ?>, total_unanswered: <?php echo $row->getTotalUnanswered(); ?>, total_accepted: <?php echo $row->getTotalAccepted(); ?>, total_votes: <?php echo $row->getTotalUsers(); ?>, total_comments: <?php echo $row->getTotalComments(); ?>, total_users: <?php echo $row->getUsers(); ?>, answers_per_minute: <?php echo $row->getAnsweresPerMinute(); ?>, questions_per_minute: <?php echo $row->getQuestionsPerMinute(); ?>, });
+        chartData.push({ date: date, acceptance_rate: <?php echo $acceptance_rate ?>, total_questions: <?php echo $row->getTotalQuestions(); ?>, total_answers: <?php echo $row->getTotalAnswers(); ?>, total_unanswered: <?php echo $row->getTotalUnanswered(); ?>, total_accepted: <?php echo $row->getTotalAccepted(); ?>, total_votes: <?php echo $row->getTotalUsers(); ?>, total_comments: <?php echo $row->getTotalComments(); ?>, total_users: <?php echo $row->getTotalUsers(); ?>, answers_per_minute: <?php echo $row->getAnswersPerMinute(); ?>, questions_per_minute: <?php echo $row->getQuestionsPerMinute(); ?>});
         <?php endforeach; ?>
 
         return chartData;
@@ -38,11 +40,13 @@ $collection = $this->getStatistics();
         "dataProvider": chartData,
         "valueAxes": [{
             "id":"v1",
-            "axisColor": "#FF6600",
+            "axisColor": "#990000",
             "axisThickness": 2,
             "gridAlpha": 0,
             "axisAlpha": 1,
-            "position": "left"
+            "position": "left",
+            "minimum": 65,
+            "maximum": 100
         }, {
             "id":"v2",
             "axisColor": "#FCD202",
@@ -58,18 +62,35 @@ $collection = $this->getStatistics();
             "offset": 50,
             "axisAlpha": 1,
             "position": "left"
+        }, {
+            "id":"v4",
+            "axisColor": "#428bca",
+            "axisThickness": 2,
+            "gridAlpha": 0,
+            "offset": 50,
+            "axisAlpha": 1,
+            "position": "right",
+        }, {
+            "id":"v5",
+            "axisColor": "#000066",
+            "axisThickness": 2,
+            "gridAlpha": 0,
+            "offset": 100,
+            "axisAlpha": 1,
+            "position": "right",
         }],
         "graphs": [
             {
                 "valueAxis": "v1",
-                "lineColor": "#FF6600",
-                "bullet": "round",
+                "lineColor": "#990000",
+                "bullet": "square",
                 "bulletBorderThickness": 1,
                 "hideBulletsCount": 30,
-                "title": "total questions",
-                "valueField": "total_questions",
+                "title": "acceptance rate",
+                "valueField": "acceptance_rate",
                 "fillAlphas": 0
-            }, {
+            },
+            {
                 "valueAxis": "v2",
                 "lineColor": "#FCD202",
                 "bullet": "square",
@@ -95,6 +116,15 @@ $collection = $this->getStatistics();
                 "hideBulletsCount": 30,
                 "title": "total unanswered",
                 "valueField": "total_unanswered",
+                "fillAlphas": 0
+            }, {
+                "valueAxis": "v5",
+                "lineColor": "#000066",
+                "bullet": "triangleUp",
+                "bulletBorderThickness": 1,
+                "hideBulletsCount": 30,
+                "title": "total questions",
+                "valueField": "total_questions",
                 "fillAlphas": 0
             }
         ],

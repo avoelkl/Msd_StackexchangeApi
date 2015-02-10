@@ -36,14 +36,13 @@
     </msd_stackexchangeapi_user_list>
 
     <msd_stackexchangeapi_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
         <reference name="head">
-            <!-- <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
-            <action method="addItem"><type>js</type><name>prototype/window.js</name></action> -->
-
             <action method="addJs"><script>msd/stackexchangeapi/amcharts/amcharts.js</script></action>
             <action method="addJs"><script>msd/stackexchangeapi/amcharts/serial.js</script></action>
             <action method="addJs"><script>msd/stackexchangeapi/amcharts/none.js</script></action>
-
         </reference>
         <reference name="content">
             <block type="msd_stackexchangeapi/statistics" name="msd_stackexchangeapi_statistics" template="msd/statistics.phtml"/>
