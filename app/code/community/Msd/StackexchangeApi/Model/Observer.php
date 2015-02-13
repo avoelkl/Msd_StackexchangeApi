@@ -47,7 +47,7 @@ class Msd_StackexchangeApi_Model_Observer {
         $seInfo = Zend_Json::decode($seClient->getDataFromUrl($helper->getAreaUrl()));
         $data = $seInfo['items'][0];
         $model = Mage::getModel('msd_stackexchangeapi/statistics');
-        $date = date("Y-m-d H:i:s", time());
+        $date = Mage::getModel('core/date')->date('Y-m-d H:i:s');
 
         try {
             $model->setDate($date);
