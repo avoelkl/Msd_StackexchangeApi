@@ -37,7 +37,7 @@
 
     <msd_stackexchangeapi_index_index>
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
             <action method="addJs"><script>msd/stackexchangeapi/amcharts/amcharts.js</script></action>
