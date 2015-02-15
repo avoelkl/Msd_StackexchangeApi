@@ -14,6 +14,18 @@ $collection = $this->getStatistics();
     }
 </style>
 
+<p>
+    <b>Pro-Tip:</b> select/deselect values from the legend below the chart to see detailed curves, zoom in/out
+</p>
+<p>&nbsp;</p>
+<?php $current = $collection->getLastItem(); ?>
+<p>
+    <b>Current data:</b><br />
+    Total questions: <?php echo $current->getTotalQuestions(); ?><br />
+    Total answers: <?php echo $current->getTotalAnswers(); ?><br />
+    Total unanswered: <?php echo $current->getTotalUnanswered(); ?><br />
+    Answer rate: <?php echo $current->getTotalQuestions() > 0 ? round((($current->getTotalQuestions() - $current->getTotalUnanswered()) / $current->getTotalQuestions())*100,2) : 0; ?>%<br />
+</p>
 <script type="text/javascript">
     var chartData = generatechartData();
 
