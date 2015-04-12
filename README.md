@@ -1,5 +1,7 @@
 Msd_StackexchangeApi
 ================
+[![Code Climate](https://codeclimate.com/github/avoelkl/Msd_StackexchangeApi/badges/gpa.svg)](https://codeclimate.com/github/avoelkl/Msd_StackexchangeApi)
+
 This extension implements the Stackexchange API for Magento used for [MageStackDay](http://www.magestackday.com).
 
 Facts
