@@ -49,7 +49,7 @@ Any contributions are highly appreciated. The best way to contribute code is to 
 Developer
 ---------
 Anna Völkl  
-[http://anna.vape.net](http://anna.vape.net)  
+[http://anna.voelkl.at](http://anna.voelkl.at)  
 [@rescueAnn](https://twitter.com/rescueAnn)
 
 Licence
